@@ -1,0 +1,18 @@
+@model UserInfo;
+@{
+    ViewBag.Title ="Applicants Details";
+}
+@{
+    var className = @Model.Participation == true ? "primary":"danger";
+    var report = @Model.Participation == true ? "ATTENDING":"NOT ATTENDING";
+}
+<main class="text-center">
+<h1 class="h4">Applicant Detail</h1>
+<span class="badge  badge-@className" > 
+    @report
+</span>
+<p>Name: @Model.Name</p>
+<p>Email:@Model.Email</p>
+<p>Phone:@Model.Phone </p>
+<a asp-controller="Meeting" asp-action="List" class="btn btn-outline-@className">Applicants List</a>
+</main>

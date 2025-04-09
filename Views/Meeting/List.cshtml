@@ -1,0 +1,35 @@
+@model List<UserInfo>; 
+  @{ ViewBag.Title = "Toplanti Katilim Listesi "; }
+  <main class="text-center">
+    <h1 class="h4">List Of Applicants</h1>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Application Status</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        @{int i = 0;} @foreach(var user in Model){ var durum =
+        user.Participation == true ? "YES" : "NO"; var className=
+        user.Participation == true ? "table-success" : "table-danger"; if
+        (user.Participation == true){i++;}
+        <tr class="@className">
+          <td>@user.Name</td>
+          <td>@durum</td>
+          <td>
+            <a class="btn btn-sm btn-primary" href="/meeting/details/@user.Id">Details</a>
+          </td>
+        </tr>
+
+        }
+      </tbody>
+    </table>
+    <div class="card">
+      <div class="card-body">
+        <p>Number Of Participants: @i</p>
+      </div>
+    </div>
+  </main></UserInfo
+>
